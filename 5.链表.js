@@ -49,6 +49,16 @@ function LinkedList(){
         }
 
     }
+
+    this.toString = function(){
+        var current = head,
+        string =''
+        while(current){
+            string =current.element
+            current = current.next
+        }
+        return string
+    }
     this.removeAt=function(position){}
     this.remove=function(element){}
     this.indexOf=function(element){}
