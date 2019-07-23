@@ -10,6 +10,7 @@ function BinarySearchTree(){
     this.min=min
     this.max=max
     this.search=search
+    this.remove=remove
 }
 
 function Node(key,left,right){
@@ -139,15 +140,15 @@ function removeNode(node,key){
         }else if(node.right==null){
             return node.left
         }//有左有右
-        var tempNode = getSmallest(node.right)
-        node.data = tempNode.data
-        node.right = removeNode(node.right, tempNode.data)
+        var tempNode = min(node.right)
+        node.key = tempNode.key
+        node.right = removeNode(node.right, tempNode.key)
         return node
-    }else if (data < node.data) {
-        node.left = removeNode(node.left, data)
+    }else if (key < node.key) {
+        node.left = removeNode(node.left, key)
         return node
     }else { 
-        node.right = removeNode(node.right, data)
+        node.right = removeNode(node.right, key)
         return node
     }
 
@@ -185,3 +186,8 @@ var maxKey=tree.max()
 console.log('max:'+maxKey)
 var searchKey = tree.search(11)
 console.log(searchKey?'key 11 found':'key 11 not found')
+
+tree.remove(12)
+inOrderTraverse(tree.root)
+
+// console.log("remove12:"+tree.root)
